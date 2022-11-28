@@ -1,5 +1,5 @@
 # SecretDiary
-sharedPreference\n
+sharedPreference
 ->commit: UI thread를 블록하고 데이터를 저장할 때 까지 기다림 
 ->apply: 기다리지 않고 비동기적으로 저장
 
