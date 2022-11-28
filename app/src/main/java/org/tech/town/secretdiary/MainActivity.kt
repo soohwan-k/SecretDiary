@@ -1,6 +1,7 @@
 package org.tech.town.secretdiary
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var changePasswordMode = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -65,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             val passwordFromUser = "${firstNumberPicker.value}${secondNumberPicker.value}${thirdNumberPicker.value}"
 
             if (passwordPreferences.getString("password", "000").equals(passwordFromUser)){
-                //TODO 다이어리 페이지 작성 후에 넘겨주어야 함
-                //startActivity()
+                intent = Intent(this, DiaryActivity::class.java)
+                startActivity(intent)
             }else{
                 showErrorAlertDialog()
             }
@@ -89,9 +91,7 @@ class MainActivity : AppCompatActivity() {
                 if (passwordPreferences.getString("password", "000").equals(passwordFromUser)){
                     changePasswordMode = true
                     Toast.makeText(this,"변경할 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
-
                     changePasswordButton.setBackgroundColor(Color.RED)
-
 
                 }else{
                     showErrorAlertDialog()
